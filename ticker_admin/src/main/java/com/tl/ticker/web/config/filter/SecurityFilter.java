@@ -13,7 +13,7 @@ import java.io.IOException;
 /**
  * Created by pangjian on 16-12-1.
  */
-@WebFilter(urlPatterns = "admin/**")
+@WebFilter(displayName = "securityFilter",urlPatterns = "*/admin/**")
 public class SecurityFilter implements Filter{
 
     @Override
@@ -29,6 +29,11 @@ public class SecurityFilter implements Filter{
 
         String home = request.getContextPath();
         String uri = request.getRequestURI();//当前访问的地址
+
+        if(uri.indexOf("/js/")>=0 ||uri.indexOf("/images/")>=0 ||uri.indexOf(".css")>=0 ){
+            filterChain.doFilter(servletRequest, servletResponse);
+            return;
+        }
 
         if (request.getSession().getAttribute(Constant.SESSION_USER) != null) {
             filterChain.doFilter(servletRequest, servletResponse);
