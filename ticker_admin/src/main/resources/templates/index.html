@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta content="text/html;charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>彩票网 后台管理 </title>
+    <link th:href="@{style.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{font-awesome.min.css}" rel="stylesheet" type="text/css"/>
+
+    <style type="text/css">
+
+        html,body{
+            height:100%;
+        }
+        div.m_head_panel{
+            height:80px;
+            background-color:gray;
+        }
+
+        div.m_left_panel{
+            width:230px;
+            background-color:#364053;
+            float:left;
+            height:calc(100% - 80px);
+            overflow:auto;
+        }
+
+        div.m_left_panel ul{
+            margin-top:15px;
+        }
+        div.m_left_panel ul li{
+            height:50px;
+            line-height:50px;
+            border-bottom:1px solid #4b4b4b;
+            position:relative;
+        }
+        div.m_left_panel ul li a{
+            color:#ADB4C9;
+            font-weight:bold;
+            display:block;
+            text-indent:60px;
+        }
+        div.m_left_panel ul li a:hover{
+            color:#b2644f;
+        }
+        div.m_left_panel ul li a.active{
+            color:#F45C32;
+            border-left:5px solid #F45C32;
+        }
+
+        div.m_left_panel ul li a.active:after{
+            position: absolute;
+            right: 15px;
+            top: 12px;
+            font: normal normal normal 24px/1 FontAwesome;
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+            content: "\f105";
+        }
+
+        div.m_right_panel{
+            width:calc(100% - 240px);
+            float:left;
+            height:calc(100% - 80px);
+            overflow:auto;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div class="m_head_panel">
+
+    </div>
+    <div class="m_left_panel">
+        <ul class="m_menu">
+            <li><a href="">彩票销售</a> </li>
+            <li><a class="active" href="">用户管理</a></li>
+            <li><a href="">订单管理</a></li>
+            <li><a href="">基础信息</a> </li>
+            <li><a href="">网站资产</a> </li>
+            <li><a href="">论坛信息</a> </li>
+        </ul>
+    </div>
+    <div class="m_right_panel">
+        <iframe src="topics" width="100%" height="99%"></iframe>
+    </div>
+</body>
+</html>
