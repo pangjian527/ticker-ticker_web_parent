@@ -18,3 +18,21 @@ div.m_data_panel table tbody td{
     padding:0 5px;
     border-bottom: 1px solid #e4e4e4;
 }
+
+div.m_data_panel table tbody td a{
+    font-size:14px;
+    padding:8px;
+}
+
+div.m_data_panel table tbody td a:hover{
+    color:white;
+    background-color:#B1191A;
+    text-decoration:none;
+}
+
+div.page_panel{
+    text-align:right;
+    height:50px;
+    line-height:50px;
+    padding-right:30px;
+}

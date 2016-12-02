@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta content="text/html;charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>彩票网 后台管理 用户列表 </title>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link th:href="@{/style.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/data_list_style.css}" rel="stylesheet" type="text/css"/>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+    <div class="content t_row_spit_panel">
+        <label class="t_row_spit">我的订单</label>
+    </div>
+    <div class="m_data_panel">
+        <table cellpadding="0" cellspacing="0">
+            <thead>
+                <tr>
+                    <td width="50">NO.</td>
+                    <td >手机号</td>
+                    <td width="100">剩余金币</td>
+                    <td width="200">注册时间</td>
+                    <td width="200">推荐人</td>
+                    <td width="100">中奖率</td>
+                    <td width="100">状态</td>
+                    <td width="150">操作</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="consumer,consumerStat:${listResult}">
+                    <td th:text="(${consumerStat.index}+1)">1</td>
+                    <td th:text="${consumer.mobile}">13535869614</td>
+                    <td th:text="${consumer.balance}">100.00</td>
+                    <td th:text="${#dates.format(consumer.createTime,'yyy-MM-dd HH:mm')}">2016-11-30 20:30:30</td>
+                    <td th:text="${consumer.refereeId}">13535869614</td>
+                    <td>80%</td>
+                    <td th:text="${consumer.statusText}">无效</td>
+                    <td>
+                        <a href="">充值</a>
+                        <a href="">禁用</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="page_panel">
+        <ul class="pagination pagination-lg">
+            <li><a href="#">&laquo;</a></li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#">&raquo;</a></li>
+        </ul>
+    </div>
+</body>
+</html>

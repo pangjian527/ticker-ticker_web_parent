@@ -30,6 +30,7 @@ public class SecurityFilter implements Filter{
         String home = request.getContextPath();
         String uri = request.getRequestURI();//当前访问的地址
 
+        /* 静态资源不拦截 */
         if(uri.indexOf("/js/")>=0 ||uri.indexOf("/images/")>=0 ||uri.indexOf(".css")>=0 ){
             filterChain.doFilter(servletRequest, servletResponse);
             return;
@@ -41,8 +42,7 @@ public class SecurityFilter implements Filter{
         }
 
         String loginUrl = home + "/admin";
-
-        if (uri.equals(loginUrl)) {
+        if (uri.equals(loginUrl) || "/admin/login".equals(uri)) {
             filterChain.doFilter(servletRequest, servletResponse);
             return;
         }

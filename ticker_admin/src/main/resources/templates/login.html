@@ -92,11 +92,13 @@
             var validCode = document.getElementById("validCode").value;
 
             $.ajax({
-                url: "/login",
+                url: "/admin/login",
                 dataType:"json",
                 data:{"mobile":mobile,"pwd":pwd,"validCode":validCode},
                 success: function(object){
-                   if(!object.isOk){
+                   if(object.ok == true){
+                     window.location = "/admin/index";
+                   }else{
                      alert(object.result);
                    }
                 }

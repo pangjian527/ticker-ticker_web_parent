@@ -1,11 +1,20 @@
 package com.tl.ticker.web.action;
 
+import com.sun.rmi.rmid.ExecPermission;
+import com.tl.rpc.common.ServiceToken;
+import com.tl.rpc.sys.SysUser;
+import com.tl.rpc.sys.SysUserService;
+import com.tl.rpc.topic.SearchTopicResult;
+import com.tl.rpc.topic.TOPICSTATUS;
+import com.tl.rpc.topic.TopicService;
 import com.tl.ticker.web.common.Constant;
 import com.tl.ticker.web.entity.ResultJson;
 import com.tl.ticker.web.util.JsonUtil;
 import com.tl.ticker.web.util.ValidateCodeUtil;
 import net.sf.json.JSONObject;
 import org.apache.commons.lang.StringUtils;
+import org.apache.thrift.TException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,7 +41,7 @@ public class LoginAction {
 
     @ResponseBody
     @RequestMapping("/admin/login")
-    public String login(HttpSession session, String mobile, String pwd, String validCode){
+    public String login(HttpSession session, String mobile, String pwd, String validCode) {
 
         if(StringUtils.isBlank(mobile)){
             return JsonUtil.toString(new ResultJson(false,"手机号码必填"));
@@ -45,11 +54,27 @@ public class LoginAction {
 
         String code = session.getAttribute(Constant.VALID_CODE).toString();
 
-        if(!code.equals(validCode)){
+        if(!code.equalsIgnoreCase(validCode)){
             return JsonUtil.toString(new ResultJson(false, "验证码不正确"));
         }
 
+        SysUser sysUser = null ;
+        try{
+            sysUser = sysUserService.getByAccount(new ServiceToken(),mobile);
+        }catch (TException e){
+            e.printStackTrace();
+            return JsonUtil.toString(new ResultJson(false, "用户不存在"));
+        }
+
+        if(!pwd.equals(sysUser.getPwd())){
+            return JsonUtil.toString(new ResultJson(false, "密码错误"));
+        }
+
+        //缓存用户信息
+        session.setAttribute(Constant.SESSION_USER,sysUser);
         return JsonUtil.toString(new ResultJson(true));
     }
 
+    @Autowired
+    private SysUserService sysUserService;
 }
