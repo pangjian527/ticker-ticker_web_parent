@@ -4,7 +4,8 @@ import com.tl.rpc.common.ServiceToken;
 import com.tl.rpc.consumer.Consumer;
 import com.tl.rpc.consumer.ConsumerService;
 import com.tl.rpc.consumer.SearchResult;
-import com.tl.ticker.web.action.resultentity.ConsumerResult;
+import com.tl.ticker.web.action.entity.ConsumerResult;
+import com.tl.ticker.web.action.entity.PageResult;
 import com.tl.ticker.web.util.StrFunUtil;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +37,7 @@ public class ConsumerAction {
         }
 
         model.addAttribute("listResult",listResult);
-        model.addAttribute("totalCount",searchResult.getTotalCount());
+        model.addAttribute("pageResult",new PageResult(searchResult.getTotalCount(),limit,offset));
 
         return "consumer/consumer_list";
     }

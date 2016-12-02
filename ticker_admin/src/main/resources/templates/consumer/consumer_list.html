@@ -48,13 +48,9 @@
     </div>
     <div class="page_panel">
         <ul class="pagination pagination-lg">
-            <li><a href="#">&laquo;</a></li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li><a href="#">&raquo;</a></li>
+            <li><a href="#">上一页</a></li>
+            <li th:each="i: ${#numbers.sequence(1,pageResult.loopCount)}"><a th:href="@{'/admin/consumer/search?offset='+(${pageResult.nextOffset})}" th:text="${i}"></a></li>
+            <li><a href="#">下一页</a></li>
         </ul>
     </div>
 </body>
