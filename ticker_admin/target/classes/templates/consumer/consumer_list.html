@@ -49,7 +49,7 @@
     <div class="page_panel">
         <ul class="pagination pagination-lg">
             <li><a href="#">上一页</a></li>
-            <li th:each="i: ${#numbers.sequence(1,pageResult.loopCount)}"><a th:href="@{'/admin/consumer/search?offset='+(${pageResult.nextOffset}+15)}" th:text="${i}"></a></li>
+            <li th:each="url,urlStat:${pageResult.pageUrls}"><a th:href="${url}" th:text="(${urlStat.index}+1)"></a></li>
             <li><a href="#">下一页</a></li>
         </ul>
     </div>

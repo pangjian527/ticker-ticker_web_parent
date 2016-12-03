@@ -75,6 +75,12 @@ public class LoginAction {
         return JsonUtil.toString(new ResultJson(true));
     }
 
+    @RequestMapping("/admin/logout")
+    public String logout(HttpSession session,Model model){
+        session.setAttribute(Constant.SESSION_USER,null);
+        return "redirect:/admin";
+    }
+
     @Autowired
     private SysUserService sysUserService;
 }
