@@ -5,6 +5,8 @@ import com.tl.rpc.consumer.CONSUMERSTATUS;
 import com.tl.rpc.consumer.Consumer;
 import com.tl.rpc.consumer.ConsumerService;
 import com.tl.rpc.consumer.SearchResult;
+import com.tl.rpc.recharge.Recharge;
+import com.tl.rpc.recharge.RechargeService;
 import com.tl.ticker.web.action.entity.ConsumerResult;
 import com.tl.ticker.web.action.entity.PageResult;
 import com.tl.ticker.web.action.entity.ResultJson;
@@ -17,6 +19,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -48,31 +51,37 @@ public class ConsumerAction {
     }
 
     /* 用户充值 */
-    @ResponseBody
     @RequestMapping("/admin/consumer/recharge")
-    public String recharge(HttpServletRequest request) throws Exception{
+    public String recharge(HttpServletRequest request,Model model,String userId ) throws Exception{
 
-        String userId = request.getParameter("userId");
-        int amount = StrFunUtil.valueInt(request.getParameter("amount"));
+
+        String balance = request.getParameter("balance");
+        String giveAmount = request.getParameter("giveAmount");
+
+        long gold = Long.valueOf(balance);
+        long giveGold = Long.valueOf(giveAmount);
+
 
         ServiceToken token = new ServiceToken();
         Consumer consumer = consumerService.getById(token, userId);
-        consumer.setBalance(consumer.getBalance() + amount);
-
+        consumer.setBalance(consumer.getBalance() + gold+ giveGold);
         consumerService.saveConsumer(token,consumer);
-        return JsonUtil.toString(new ResultJson(true));
+
+        rechargeService.saveRecharge(token,createRecharge(gold,giveGold,userId));
+
+        return ResultJson.returnSuccess("充值成功",model);
     }
 
     @ResponseBody
-    @RequestMapping("/admin/consumer/udpate")
+    @RequestMapping("/admin/consumer/disable")
     public String disable(Model model, HttpServletRequest request) throws Exception{
         String userId = request.getParameter("userId");
         return updateConsumer(CONSUMERSTATUS.INVALID,userId);
     }
 
     @ResponseBody
-    @RequestMapping("/admin/consumer/udpate")
-    public String dnable(Model model, HttpServletRequest request) throws Exception{
+    @RequestMapping("/admin/consumer/enable")
+    public String enable(Model model, HttpServletRequest request) throws Exception{
         String userId = request.getParameter("userId");
         return updateConsumer(CONSUMERSTATUS.EFFECTIVE,userId);
     }
@@ -87,7 +96,31 @@ public class ConsumerAction {
         return JsonUtil.toString(new ResultJson(true));
     }
 
+    @RequestMapping("/admin/consumer/detail")
+    public String consumerDetail(Model model, String userId) throws Exception{
+
+        ServiceToken token = new ServiceToken();
+        Consumer consumer = consumerService.getById(token, userId);
+        model.addAttribute("consumer",consumer);
+
+        return "consumer/balance_recharge";
+    }
+
+    private Recharge createRecharge(long balance,long giveAmount,String userId){
+        Recharge recharge = new Recharge();
+        recharge.setCreateTime(new Date().getTime());
+        recharge.setAmount(balance);
+        recharge.setGiveAmount(giveAmount);
+        recharge.setSource("sys");
+        recharge.setUserId(userId);
+
+        return recharge;
+    }
+
     @Autowired
     private ConsumerService consumerService;
+
+    @Autowired
+    private RechargeService rechargeService;
 
 }

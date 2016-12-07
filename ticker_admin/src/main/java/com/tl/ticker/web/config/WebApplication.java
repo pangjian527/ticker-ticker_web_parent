@@ -8,6 +8,7 @@ import com.tl.rpc.consumer.ConsumerService;
 import com.tl.rpc.lottery.LotteryDataService;
 import com.tl.rpc.msg.MsgService;
 import com.tl.rpc.order.OrderService;
+import com.tl.rpc.product.ProductService;
 import com.tl.rpc.recharge.RechargeService;
 import com.tl.rpc.reply.ReplyService;
 import com.tl.rpc.sys.SysUserService;
@@ -83,6 +84,11 @@ public class WebApplication extends WebMvcConfigurerAdapter{
     @Bean
     public ServiceProxy replyService() throws Exception{
         return new ServiceProxy(ReplyService.class,this.serviceConfig());
+    }
+
+    @Bean
+    public ServiceProxy productService() throws Exception{
+        return new ServiceProxy(ProductService.class,this.serviceConfig());
     }
 
 

@@ -31,7 +31,7 @@ public class SecurityFilter implements Filter{
         String uri = request.getRequestURI();//当前访问的地址
 
         /* 静态资源不拦截 */
-        if(uri.indexOf("/js/")>=0 ||uri.indexOf("/images/")>=0 ||uri.indexOf(".css")>=0 ){
+        if(uri.indexOf("/js/")>=0 ||uri.indexOf("/images/")>=0 ||uri.indexOf(".css")>=0 ||uri.indexOf(".ico")>=0){
             filterChain.doFilter(servletRequest, servletResponse);
             return;
         }

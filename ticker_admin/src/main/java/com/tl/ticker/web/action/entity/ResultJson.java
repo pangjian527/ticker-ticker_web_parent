@@ -1,5 +1,7 @@
 package com.tl.ticker.web.action.entity;
 
+import org.springframework.ui.Model;
+
 /**
  * Created by pangjian on 16-12-1.
  */
@@ -52,5 +54,10 @@ public class ResultJson {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public static String returnSuccess(String content,Model model){
+        model.addAttribute("content",content);
+        return "/common/result";
     }
 }

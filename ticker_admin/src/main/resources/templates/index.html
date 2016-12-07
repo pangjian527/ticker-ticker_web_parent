@@ -7,6 +7,8 @@
     <title>彩票网 后台管理 </title>
     <link th:href="@{/style.css}" rel="stylesheet" type="text/css"/>
     <link th:href="@{/font-awesome.min.css}" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" th:src="@{/index.js}"></script>
+
 
     <style type="text/css">
 
@@ -15,14 +17,15 @@
         }
         div.m_head_panel{
             height:80px;
-            background-color:gray;
+            border-bottom: 2px solid #364053;
+            width: 100%;
         }
 
         div.m_left_panel{
             width:230px;
             background-color:#364053;
             float:left;
-            height:calc(100% - 80px);
+            height:calc(100% - 82px);
             overflow:auto;
         }
 
@@ -62,43 +65,53 @@
         div.m_right_panel{
             width:calc(100% - 240px);
             float:left;
-            height:calc(100% - 80px);
+            height:calc(100% - 82px);
             overflow:auto;
         }
 
         div.m_head_panel div.welcome{
             height:20px;
-            background-color:white;
-            width:100%;
+            width: calc(100% - 230px);
+            float:left;
+            text-align: right;
         }
-
-         div.m_head_panel div.welcome a{
-            float:right;
-         }
+        div.m_head_panel div.welcome a {
+            padding:0 10px;
+        }
+        div.admin_logo{
+            width:230px;
+            height:100%;
+            float:left;
+            text-align: center;
+            background-color: #f3e2b4;
+        }
 
     </style>
 
 </head>
 <body>
     <div class="m_head_panel">
+        <div class="admin_logo">
+            <img src="/images/千库网-金融理财贷款金币钱袋子.png" height="100%" />
+        </div>
         <div class="welcome">
-            <label>欢迎登录系统，admin</label>
-            <a href="/admin/logout">退出</a>
+            <label>欢迎您：admin</label>
+            <a href="/admin/logout">【退出】</a>
         </div>
         <div></div>
     </div>
     <div class="m_left_panel">
-        <ul class="m_menu">
-            <li><a href="">彩票销售</a> </li>
-            <li><a class="active" href="">用户管理</a></li>
-            <li><a href="">订单管理</a></li>
-            <li><a href="">基础信息</a> </li>
-            <li><a href="">网站资产</a> </li>
-            <li><a href="">论坛信息</a> </li>
+        <ul class="m_menu" id="menus">
+            <li onclick="menuSwitch.call(this,'/admin/product/search')"><a href="javascript:void()">彩票销售</a> </li>
+            <li onclick="menuSwitch.call(this,'/admin/consumer/search')"><a class="active" href="">用户管理</a></li>
+            <li onclick="menuSwitch.call(this,'/admin/order/search')"><a href="javascript:void()">订单管理</a></li>
+            <li><a href="javascript:void()">基础信息</a> </li>
+            <li><a href="javascript:void()">网站资产</a> </li>
+            <li onclick="menuSwitch.call(this,'/admin/topics')"><a href="javascript:void()">论坛信息</a> </li>
         </ul>
     </div>
     <div class="m_right_panel">
-        <iframe src="/admin/consumer/search" width="100%" height="99%"></iframe>
+        <iframe id="iframe_content" src="/admin/consumer/search" width="100%" height="99%"></iframe>
     </div>
 </body>
 </html>

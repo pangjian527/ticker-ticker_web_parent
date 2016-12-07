@@ -25,28 +25,12 @@ public class ServiceProxy<T> implements FactoryBean{
         this.clazz = clazz;
         this.serviceConfig = serviceConfig;
     }
-
-    public void close() throws IOException {
-        closeQuietly(this.clientManager);
-    }
-
-    protected static void closeQuietly(Closeable closeable) {
-        if(null != closeable) {
-            try {
-                closeable.close();
-            } catch (IOException var2) {
-                ;
-            }
-        }
-    }
-
     @Override
     public Object getObject() throws Exception {
 
-        HostAndPort hostAndPort =
-                HostAndPort.fromParts(serviceConfig.host, serviceConfig.port);
-        return clientManager.createClient(new FramedClientConnector(hostAndPort),
-                clazz).get();
+        ProxyHandler handler = new ProxyHandler(serviceConfig,clazz);
+
+       return clazz.cast(Proxy.newProxyInstance(clazz.getClassLoader(),new Class[]{clazz,Closeable.class},handler));
     }
 
     @Override

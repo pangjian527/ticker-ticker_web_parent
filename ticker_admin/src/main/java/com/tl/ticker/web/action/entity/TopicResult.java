@@ -18,6 +18,7 @@ public class TopicResult {
     public int replyCount;
     public String status;
     public String type;
+    public String typeText;
     public int year;
     public int stage;
     public Date createTime;
@@ -37,6 +38,9 @@ public class TopicResult {
         result.replyCount = topic.getReplyCount();
         result.readCount = topic.getReadCount();
         result.userId = topic.getUserId();
+        result.title = topic.getTitle();
+
+        result.typeText = topic.getType() == TOPICTYPE.CHARGE?"收费":"免费";
 
         return result;
     }
