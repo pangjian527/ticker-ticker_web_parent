@@ -23,14 +23,13 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="ticker_admin" />
-        <module name="ticker_web" />
+        <module name="ticker_provider_web" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="ticker_admin" target="1.6" />
-      <module name="ticker_web" target="1.6" />
-      <module name="ticker_web_admin" target="1.6" />
-      <module name="ticker_web_parent" target="1.6" />
+      <module name="ticker_admin" target="1.5" />
+      <module name="ticker_provider_web" target="1.5" />
+      <module name="ticker_web_parent" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

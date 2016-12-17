@@ -29,6 +29,9 @@ public class ProductResult {
 
     public String mobile;
 
+    public int virtualCount;
+
+    public String probability;
 
     public static ProductResult fromProductResult(Product product){
 
@@ -43,6 +46,8 @@ public class ProductResult {
         result.updateTime = new Date(product.getUpdateTime());
         result.year = product.getYear();
         result.status = product.getStatus().name();
+        result.virtualCount = product.getVirtualCount();
+        result.probability = product.getProbability();
 
         return result;
     }

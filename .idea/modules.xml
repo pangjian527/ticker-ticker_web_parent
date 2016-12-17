@@ -3,8 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ticker_admin/ticker_admin.iml" filepath="$PROJECT_DIR$/ticker_admin/ticker_admin.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ticker_web/ticker_web.iml" filepath="$PROJECT_DIR$/ticker_web/ticker_web.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ticker_web_parent.iml" filepath="$PROJECT_DIR$/ticker_web_parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ticker_provider_web/ticker_provider_web.iml" filepath="$PROJECT_DIR$/ticker_provider_web/ticker_provider_web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/ticker_web_parent.iml" filepath="$PROJECT_DIR$/.idea/ticker_web_parent.iml" />
     </modules>
   </component>
 </project>
