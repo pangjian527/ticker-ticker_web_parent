@@ -24,7 +24,6 @@ public class ProxyHandler implements InvocationHandler,Cloneable {
 
     private final ThriftClientManager clientManager = new ThriftClientManager();
 
-    @Override
     public Object invoke(Object o, Method method, Object[] objects) throws Throwable {
         HostAndPort hostAndPort =
                 HostAndPort.fromParts(this.config.host, this.config.port);

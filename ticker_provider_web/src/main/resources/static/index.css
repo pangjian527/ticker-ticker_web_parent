@@ -13,7 +13,7 @@ div.recommend{
 div.footer {
     height:80px;
     margin:auto;
-    background: #323232;
+    background: #e4e4e4;
     height: 85px;
     font-size:16px;
     color:#b3b5ba;
@@ -175,7 +175,7 @@ div.t_menu_item ul li {
     float:left;
     font-size:12px;
     line-height:30px;
-    width:80px;
+    padding-left:15px;
 }
 label.number {
     color: white;

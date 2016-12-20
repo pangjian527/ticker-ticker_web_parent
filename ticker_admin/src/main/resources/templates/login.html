@@ -94,6 +94,7 @@
             $.ajax({
                 url: "/admin/login",
                 dataType:"json",
+                type:"post",
                 data:{"mobile":mobile,"pwd":pwd,"validCode":validCode},
                 success: function(object){
                    if(object.ok == true){

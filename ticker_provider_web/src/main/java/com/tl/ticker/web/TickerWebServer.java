@@ -7,10 +7,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * Created by pangjian on 16-11-30.
  */
 @SpringBootApplication
-public class TickerServer {
+public class TickerWebServer {
 
     public static void main(String[] args ){
-        SpringApplication.run(TickerServer.class,args);
+        SpringApplication.run(TickerWebServer.class,args);
     }
 
 }

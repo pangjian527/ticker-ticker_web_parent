@@ -62,7 +62,10 @@ public class ProductAction {
     }
 
     @RequestMapping("/admin/product/save")
-    public String save(Model model,String title,int year,long balance,int stage,String id,String mobile,String expect) throws Exception{
+    public String save(Model model,String title,int year,
+                       long balance,int stage,
+                       String id,String mobile
+            ,String expect,int virtualCount,String probability) throws Exception{
 
         JSONObject object = new JSONObject();
         object.element("name","龙");
@@ -86,6 +89,8 @@ public class ProductAction {
         product.setBalance(balance);
         product.setExpect(expect);
         product.setMobile(mobile);
+        product.setProbability(probability);
+        product.setVirtualCount(virtualCount);
 
         productService.saveProduct(token,product);
 
