@@ -8,7 +8,7 @@
 
     <link th:href="@{/style.css}" rel="stylesheet" type="text/css"/>
 
-
+    <script type="text/javascript" th:src="@{/js/jquery-3.1.1.min.js}"></script>
     <style type="text/css">
         div.buy_pop{
             background-color: white;
@@ -51,6 +51,9 @@
             height: 30px;
             line-height: 30px;
             color: #666;
+        }
+        div.b_buy_price{
+            padding-left:30px;
         }
          div.b_buy_price b{
             font-size: 100px;
@@ -123,12 +126,46 @@
          div.buy_button a.cancel{
             background-color:#ccc;
          }
+         img.valid{
+            vertical-align: middle;
+        }
     </style>
 
     <script type="text/javascript">
 
         function cancel(){
             window.parent.closeLayout();
+        }
+
+        function buy(productId){
+
+            var validCode = document.getElementById("validCode").value;
+            var smsCode = document.getElementById("smsCode").value;
+            var productId = document.getElementById("productId").value;
+
+            if(validCode ==""){
+                alert("请输入图形验证码");
+                return ;
+            }else if(smsCode ==""){
+                alert("请输入短信验证码");
+                return ;
+            }
+
+            $.ajax({
+                url: "/portal/buy/submit",
+                dataType:"json",
+                type:"post",
+                data:{"productId":productId,"smsCode":smsCode,"validCode":validCode},
+                success: function(object){
+                   if(object.ok == true){
+                     alert("购买成功")
+                     window.parent.location = "/portal/index";
+                   }else{
+                     alert(object.result);
+                   }
+                }
+             });
+
         }
 
     </script>
@@ -172,26 +209,23 @@
 
     <div class="b_f_form">
         <div class="u_balance">
-            <label>可用金币：<b>￥100.00</b></label>
+            <label>可用金币：￥<b th:text="${#numbers.formatDecimal(consumer.balance,1,2)}">0.00</b></label>
             <a href="">余额充值</a>
         </div>
         <div class="b_i_form">
-            <label>用户号：</label>
-            <input placeholder="手机号码" type="text"/>
+            <label>验证码：</label>
+            <input placeholder="图形验证码" class="number" name="validCode" id="validCode" type="text"/>
+            <img class="valid" th:src="${valiBase64Image}"/>
         </div>
         <div class="b_i_form">
             <label>验证码：</label>
-            <input placeholder="图形验证码" class="number" type="text"/>
-            <button>获取验证码</button>
-        </div>
-        <div class="b_i_form">
-            <label>验证码：</label>
-            <input placeholder="短信验证码" class="number" type="text"/>
+            <input placeholder="短信验证码" class="number" name="smsCode" id="smsCode" type="text"/>
+            <input type="hidden" id="productId" name="productId" th:value="${product.id}"/>
             <button>获取验证码</button>
         </div>
         <div class="buy_button">
             <a class="cancel" href="javascript:cancel()">取消</a>
-            <a href="">购买</a>
+            <a href="javascript:buy()">购买</a>
         </div>
     </div>
 </div>

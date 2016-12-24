@@ -144,6 +144,11 @@
 
             document.getElementById("editor1").value = data;
 
+            if(data == ""){
+                alert("回复内容不能为空");
+                return ;
+            }
+
             document.forms[0].submit();
         }
 

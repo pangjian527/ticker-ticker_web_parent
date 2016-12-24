@@ -235,7 +235,7 @@
 
 <div class="content flash-imgage">
     <div style="width:100%">
-        <img width="100%" src="http://hauxsoft.com/image/banner-4.jpg"/>
+        <img width="100%" th:src="@{/images/banner_1.jpg}"/>
     </div>
 </div>
 <div class="content t_w" style="margin:auto;height:45px;border-bottom:1px solid #ccc;position:relative">
@@ -253,11 +253,11 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="baseData:${baseDatas}">
-                <td th:text="${baseData.stage}">215</td>
-                <td><i th:text="${baseData.number}" th:class="${baseData.colorCode}">30</i></td>
-                <td th:text="${baseData.zodiacCode}">马</td>
-                <td th:text="${#dates.format(baseData.lotteryDate,'yyy-MM-dd')}">2015-11-20</td>
+            <tr th:each="lottery:${lotteryDatas}">
+                <td th:text="${lottery.stage}">215</td>
+                <td><i th:text="${lottery.number}" th:class="${lottery.colorCode}">30</i></td>
+                <td th:text="${lottery.zodiacCode}">马</td>
+                <td th:text="${#dates.format(lottery.lotteryDate,'yyy-MM-dd')}">2015-11-20</td>
             </tr>
             </tbody>
         </table>
@@ -307,7 +307,7 @@
         <tbody>
         <tr th:each="topic,topicStat:${listTopicResult}">
             <td th:text="(${topicStat.index}+1)">1</td>
-            <td><a href="" th:text="${topic.title}"> 九六马会心水论坛六肖王：→羊 蛇 兔 猪 马 龙→ 准吗？</a></td>
+            <td><a target="_blank" th:href="'/portal/topic/view?id='+${topic.id}" th:text="${topic.title}"> 九六马会心水论坛六肖王：→羊 蛇 兔 猪 马 龙→ 准吗？</a></td>
             <td th:text="${topic.mobile}">135****9614</td>
             <td th:text="${topic.readCount}+'/'+${topic.replyCount}">100/80</td>
             <td th:text="${#dates.format(topic.createTime,'yyy-MM-dd HH:mm')}">2016-11-30</td>

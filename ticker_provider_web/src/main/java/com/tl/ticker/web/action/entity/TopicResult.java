@@ -2,6 +2,8 @@ package com.tl.ticker.web.action.entity;
 
 import com.tl.rpc.topic.TOPICTYPE;
 import com.tl.rpc.topic.Topic;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Date;
 
@@ -39,9 +41,7 @@ public class TopicResult {
         result.userId = topic.getUserId();
         result.title = topic.getTitle();
 
-        result.typeText = topic.getType() == TOPICTYPE.CHARGE?"收费":"免费";
-
         return result;
     }
-    
+
 }

@@ -41,7 +41,7 @@ public  class ValidateCodeUtil {
         byte[] data = out.toByteArray();
 
         BASE64Encoder encoder = new BASE64Encoder();
-        return "data:image/jpg;base64,"+encoder.encode(data);//返回Base64编码过的字节数组字符串
+        return "data:image/png;base64,"+encoder.encode(data);//返回Base64编码过的字节数组字符串
     }
 
     // 验证码范围,去掉0(数字)和O(拼音)容易混淆的(小写的1和L也可以去掉,大写不用了)

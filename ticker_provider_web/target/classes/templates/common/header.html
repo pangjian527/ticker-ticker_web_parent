@@ -131,6 +131,10 @@
             background-color:#ccc;
          }
 
+         img.logo{
+            height:100px;
+         }
+
 
     </style>
 
@@ -140,14 +144,14 @@
 <div class="content t_menu">
     <div class="t_menu_item">
         <ul>
-            <li th:if="${consumer == null}"><a href="/portal/login">登录/注册</a></li>
-            <li th:if="${consumer != null}">
-                <a th:text="${consumer.mobile}" href="/portal/login">登录/注册</a>
+            <li th:if="${session.session_user_code == null}"><a href="/portal/login">登录/注册</a></li>
+            <li th:if="${session.session_user_code != null}">
+                <a th:text="${session.session_user_code.mobile}" href="/portal/login">登录/注册</a>
                 <a href="/portal/logout">退出</a>
             </li>
-            <li><a href="">我的金币</a></li>
+            <li><a href="/portal/center">我的金币</a></li>
             <li><a href="">金币充值</a></li>
-            <li><a href="">我的订购</a></li>
+            <li><a href="/portal/center">我的订购</a></li>
             <li><a href="">联系我们</a></li>
         </ul>
     </div>
@@ -155,10 +159,10 @@
 <div class="head t_w">
     <div class="d_logo_l">
         <a class="logo" href="">
-            <img src="https://misc.360buyimg.com/lib/img/e/logo-201305.png"/>
+            <img class="logo" th:src="@{/images/logo.png}"/>
         </a>
         <a class="top_ad" href="">
-            <img src="https://img10.360buyimg.com/da/jfs/t3325/264/1543304318/35381/18aca53b/582d5651Nfbd127c6.jpg" />
+
         </a>
     </div>
 </div>
@@ -169,7 +173,7 @@
             <li class="main">彩票网</li>
             <li><a href="/portal/index">首页</a></li>
             <li><a href="#"> 一元购</a></li>
-            <li><a href="#"> 心水发帖</a></li>
+            <li><a href="/portal/topic/deliver"> 心水发帖</a></li>
             <li><a href="#"> 联系我们</a></li>
         </ul>
     </div>

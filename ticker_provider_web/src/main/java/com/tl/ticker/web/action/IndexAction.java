@@ -5,6 +5,9 @@ import com.tl.rpc.base.BaseDataService;
 import com.tl.rpc.common.ServiceToken;
 import com.tl.rpc.consumer.Consumer;
 import com.tl.rpc.consumer.ConsumerService;
+import com.tl.rpc.lottery.LotteryData;
+import com.tl.rpc.lottery.LotteryDataService;
+import com.tl.rpc.lottery.SearchResult;
 import com.tl.rpc.product.Product;
 import com.tl.rpc.product.ProductService;
 import com.tl.rpc.product.SearchProductResult;
@@ -12,6 +15,7 @@ import com.tl.rpc.topic.SearchTopicResult;
 import com.tl.rpc.topic.TOPICSTATUS;
 import com.tl.rpc.topic.Topic;
 import com.tl.rpc.topic.TopicService;
+import com.tl.ticker.web.action.entity.LotteryDataResult;
 import com.tl.ticker.web.action.entity.ProductResult;
 import com.tl.ticker.web.action.entity.TopicResult;
 import com.tl.ticker.web.common.Constant;
@@ -61,8 +65,20 @@ public class IndexAction {
         }
 
         //3. 获取基础开奖数据
-        List<BaseData> baseDatas = baseDataService.searchBaseData(token, 2016);
+        SearchResult searchResult = lotteryDataService.searchLotteryData(token, 2016, 30, 0);
+        List<LotteryDataResult> lotteryDatas = new LinkedList<LotteryDataResult>();
 
+        for (LotteryData lotteryData :searchResult.getResult()) {
+
+            BaseData baseData = baseDataService.getBaseDataById(token, lotteryData.getBaseDataId());
+
+            LotteryDataResult result = LotteryDataResult.fromLotteryDataResult(lotteryData);
+            result.colorCode = baseData.getColorCode();
+            result.zodiacCode = baseData.getZodiacCode();
+
+            lotteryDatas.add(result);
+        }
+        
         Object object = session.getAttribute(Constant.SESSION_USER);
 
         if(object != null){
@@ -70,7 +86,7 @@ public class IndexAction {
         }
 
         model.addAttribute("listResult",listResult);
-        model.addAttribute("baseDatas",baseDatas);
+        model.addAttribute("lotteryDatas",lotteryDatas);
         model.addAttribute("listTopicResult",listTopicResult);
         return "index";
     }
@@ -82,6 +98,11 @@ public class IndexAction {
     @Autowired
     private ConsumerService consumerService;
     @Autowired
+    private LotteryDataService lotteryDataService;
+
+    @Autowired
     private BaseDataService baseDataService;
+
+
 
 }
