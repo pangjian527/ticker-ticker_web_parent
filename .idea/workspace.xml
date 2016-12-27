@@ -2,10 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7e53c274-86d1-4786-a580-0bff6cf0990f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ticker_admin/pom.xml" afterPath="$PROJECT_DIR$/ticker_admin/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ticker_admin/src/main/java/com/tl/ticker/web/TickerAdminServer.java" afterPath="$PROJECT_DIR$/ticker_admin/src/main/java/com/tl/ticker/web/TickerAdminServer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ticker_provider_web/pom.xml" afterPath="$PROJECT_DIR$/ticker_provider_web/pom.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ticker_provider_web/target/classes/com/tl/ticker/web/TickerWebServer.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ticker_provider_web/target/classes/com/tl/ticker/web/action/BuyAction.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ticker_provider_web/target/classes/com/tl/ticker/web/action/CenterAction.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ticker_provider_web/target/classes/com/tl/ticker/web/action/IndexAction.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ticker_provider_web/target/classes/com/tl/ticker/web/action/LoginAction.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ticker_provider_web/target/classes/com/tl/ticker/web/action/RegisterAction.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ticker_provider_web/target/classes/com/tl/ticker/web/action/TopicAction.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ticker_provider_web/target/classes/com/tl/ticker/web/action/entity/LotteryDataResult.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ticker_provider_web/target/classes/com/tl/ticker/web/action/entity/OrderItemResult.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ticker_provider_web/target/classes/com/tl/ticker/web/action/entity/PageResult.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ticker_provider_web/target/classes/com/tl/ticker/web/action/entity/ProductResult.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ticker_provider_web/target/classes/com/tl/ticker/web/action/entity/RechargeResult.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ticker_provider_web/target/classes/com/tl/ticker/web/action/entity/ReplyResult.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ticker_provider_web/target/classes/com/tl/ticker/web/action/entity/ResultJson.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ticker_provider_web/target/classes/com/tl/ticker/web/action/entity/TopicResult.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ticker_provider_web/target/classes/com/tl/ticker/web/common/Constant.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ticker_provider_web/target/classes/com/tl/ticker/web/config/ProxyHandler.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ticker_provider_web/target/classes/com/tl/ticker/web/config/ServiceConfig.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ticker_provider_web/target/classes/com/tl/ticker/web/config/ServiceProxy.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ticker_provider_web/target/classes/com/tl/ticker/web/config/WebApplication.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ticker_provider_web/target/classes/com/tl/ticker/web/util/JsonUtil.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ticker_provider_web/target/classes/com/tl/ticker/web/util/StrFunUtil.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ticker_provider_web/target/classes/com/tl/ticker/web/util/ValidateCodeUtil.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ticker_provider_web/target/classes/server.conf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ticker_provider_web/target/maven-archiver/pom.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ticker_provider_web/target/ticker_provider_web-1.0-SNAPSHOT-jar-with-dependencies.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ticker_provider_web/target/ticker_provider_web-1.0-SNAPSHOT.jar" afterPath="" />
     </list>
     <ignored path="ticker_web_parent.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -286,24 +309,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="target" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ticker_web_parent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ticker_web_parent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ticker_provider_web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -371,24 +376,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="ticker_admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ticker_web_parent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ticker_web_parent" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ticker_admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="target" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
